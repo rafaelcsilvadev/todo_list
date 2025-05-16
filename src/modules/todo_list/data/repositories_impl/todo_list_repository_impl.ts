@@ -1,13 +1,14 @@
-import { TODOS } from "../../../../core/constants/storage_keys";
 import type { TodoListEntity } from "../../domain/entities/todo_list_entity";
 import type { TodoListRepository } from "../../domain/repositories/todo_list_repository";
+import type { TodoListDataSource } from "../data_sources/todo_list_datasource";
 import { fromJson } from "../models/todo_list_model";
 
-export const todoListRepositoryImpl = (): TodoListRepository => { 
+export const todoListRepositoryImpl = (dataSource: TodoListDataSource): TodoListRepository => {
     return {
         getAll: () => {
-            const storage = localStorage.getItem(TODOS);
+            const storage = dataSource.getTodoList();
             if (storage) {
+     
                 const todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
             
                 return todos;
@@ -16,7 +17,7 @@ export const todoListRepositoryImpl = (): TodoListRepository => {
             return [];
         },
         getById: (id: number) => {
-            const storage = localStorage.getItem(TODOS);
+            const storage = dataSource.getTodoList();
             if (storage) {
                 const todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
 
@@ -26,7 +27,7 @@ export const todoListRepositoryImpl = (): TodoListRepository => {
             return [];
         },
         create: (todo) => {
-            const storage = localStorage.getItem(TODOS);
+            const storage = dataSource.getTodoList();
             let todos: TodoListEntity[] = [];
 
             if (storage) {
@@ -39,19 +40,19 @@ export const todoListRepositoryImpl = (): TodoListRepository => {
                 createdAt: new Date(),
             };
             todos.push(newTodo);
-            localStorage.setItem(TODOS, JSON.stringify(todos));
+            dataSource.setData(JSON.stringify(todos));
 
             return todo;
         },
         update: (id: number, todo) => {
-            const storage = localStorage.getItem(TODOS);
+            const storage = dataSource.getTodoList();
             if (storage) {
                 const todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
 
                 const index = todos.findIndex((todo) => todo.id === id);
                 if (index !== -1) {
                     todos[index] = { ...todos[index], ...todo };
-                    localStorage.setItem(TODOS, JSON.stringify(todos));
+                    dataSource.setData(JSON.stringify(todos));
                     return todos[index];
                 }
             }            
@@ -59,14 +60,14 @@ export const todoListRepositoryImpl = (): TodoListRepository => {
             return null;
         },
         delete: (id: number) => {
-            const storage = localStorage.getItem(TODOS);
+            const storage = dataSource.getTodoList();
             if (storage) {
                 const todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
 
                 const index = todos.findIndex((todo) => todo.id === id);
                 if (index !== -1) {
                     todos.splice(index, 1);
-                    localStorage.setItem(TODOS, JSON.stringify(todos));
+                    dataSource.setData(JSON.stringify(todos));
                 }
             }
         }

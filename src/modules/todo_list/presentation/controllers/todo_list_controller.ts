@@ -9,7 +9,7 @@ export interface TudoListController {
     delete(id: number): void;
 }
 
-export const todoListController = (useCase: TudoListUseCase): TudoListController => {
+export const todoListControllerImpl = (useCase: TudoListUseCase): TudoListController => {
     return {
         getAll() {
             return useCase.getAll();

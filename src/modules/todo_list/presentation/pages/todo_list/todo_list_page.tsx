@@ -1,10 +1,9 @@
 import type { ReactNode } from "react";
+import Button from "../../components/button/button";
 
 function TodoListPage(): ReactNode {
     return (
-        <span>
-            Teste
-        </span>
+        <Button label="Send" onClick={() => alert('Teste')} disabled={true}/>
     )
 }
 

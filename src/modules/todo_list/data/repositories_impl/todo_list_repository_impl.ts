@@ -3,7 +3,7 @@ import type { TodoListRepository } from "../../domain/repositories/todo_list_rep
 import type { TodoListDataSource } from "../data_sources/todo_list_datasource";
 import { fromJson } from "../models/todo_list_model";
 
-export const todoListRepositoryImpl = (dataSource: TodoListDataSource): TodoListRepository => {
+export const TodoListRepositoryImpl = (dataSource: TodoListDataSource): TodoListRepository => {
     return {
         getAll: () => {
             const storage = dataSource.getTodoList();

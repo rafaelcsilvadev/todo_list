@@ -1,8 +1,8 @@
 import React, { createContext, useContext } from 'react';
 import { todoListControllerImpl, type TudoListController } from '../controllers/todo_list_controller';
-import { todoListUseCase } from '../../domain/use_cases/todo_list_usecase';
-import { todoListRepositoryImpl } from '../../data/repositories_impl/todo_list_repository_impl';
-import { todoListDataSourceImpl } from '../../data/data_sources/todo_list_datasource';
+import { TodoListUseCase } from '../../domain/use_cases/todo_list_usecase';
+import { TodoListRepositoryImpl } from '../../data/repositories_impl/todo_list_repository_impl';
+import { TodoListDataSourceImpl } from '../../data/data_sources/todo_list_datasource';
 
 const TodoListContext = createContext<TudoListController | null>(null);
 
@@ -14,9 +14,9 @@ export const useApp = (): TudoListController => {
 
 export const TodoListProvider = ({ children }: { children: React.ReactNode }) => {
   const controller = todoListControllerImpl(
-    todoListUseCase(
-      todoListRepositoryImpl(
-        todoListDataSourceImpl()
+    TodoListUseCase(
+      TodoListRepositoryImpl(
+        TodoListDataSourceImpl()
       )
     )
   );

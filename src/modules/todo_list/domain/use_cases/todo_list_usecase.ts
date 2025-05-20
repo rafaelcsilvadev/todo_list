@@ -9,7 +9,7 @@ export interface TudoListUseCase {
     delete(id: number): void;
 }
 
-export const todoListUseCase = (repository: TodoListRepository): TudoListUseCase => {
+export const TodoListUseCase = (repository: TodoListRepository): TudoListUseCase => {
     return {
             getAll: () => {
                 return repository.getAll();

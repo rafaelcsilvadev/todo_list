@@ -5,7 +5,7 @@ export interface TodoListDataSource {
     setData(todoList: string): void;
 }
 
-export const todoListDataSourceImpl = (): TodoListDataSource => {
+export const TodoListDataSourceImpl = (): TodoListDataSource => {
     return {
         getTodoList: () => {
             return localStorage.getItem(TODOS);

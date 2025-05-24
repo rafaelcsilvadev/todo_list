@@ -3,7 +3,7 @@ import Nav from "../../components/nav/nav";
 
 function TodoListPage(): ReactNode {
     return (
-        <Nav />
+        <Nav title="teste"/>
     )
 }
 

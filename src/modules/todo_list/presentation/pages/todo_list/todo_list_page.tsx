@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import Input from "../../components/input/input";
+import Nav from "../../components/nav/nav";
 
 function TodoListPage(): ReactNode {
     return (
-        <Input />
+        <Nav />
     )
 }
 

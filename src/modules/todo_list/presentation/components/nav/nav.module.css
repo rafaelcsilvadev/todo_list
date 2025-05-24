@@ -1,0 +1,13 @@
+@import '.../../../../../../../core/theme/theme.css';
+
+.nav {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+
+    h1 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        font-family: var(--font-family);
+    }
+}

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import style from "./input.module.css";
 
 type InputType = Exclude<React.HTMLInputTypeAttribute, "radio" | "checkbox" | "color">;
@@ -8,7 +9,7 @@ interface InputProps {
     readonly label: string;
 }
 
-function Input({ id, type, label }: InputProps) {
+function Input({ id, type, label }: InputProps): ReactNode {
     return (
         <div className={style.inputBox}>
             <label htmlFor={id}>{label}</label><br />

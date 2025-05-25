@@ -4,23 +4,29 @@ import style from "./form_modal.module.css";
 
 interface FormModalProps {
     readonly onSubmit: () => void;
-    readonly onChange1: () => void;
-    readonly onChange2: () => void;
+    readonly onCancel: () => void;
+    readonly value1: string;
+    readonly value2: string;
+    readonly onChange1: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    readonly onChange2: (event: React.ChangeEvent<HTMLInputElement>) => void;
     readonly isCreate: boolean;
 }
 
-function FormModal({ onSubmit, onChange1, onChange2, isCreate = true }: FormModalProps): React.ReactElement {
+function FormModal({ ...props }: FormModalProps): React.ReactElement {
     let title: string =
-        isCreate ? 'Create' : 'Update';
+    props.isCreate ? 'Create' : 'Update';
     
     return (
         <div className={style.formBox}>
-            <form>
+            <div className={style.form}>
                 <h2>{title} Task</h2>
-                <Input id="0" label="Title" type="text" onChange={onChange1} />
-                <Input id="1" label="Description" type="text" onChange={onChange2} />
-                <Button label={title} onClick={onSubmit} />
-            </form>
+                <Input id="0" label="Title" type="text" onChange={props.onChange1} value={props.value1} />
+                <Input id="1" label="Description" type="text" onChange={props.onChange2} value={props.value2} />
+                <div className={style.buttonBox}>
+                    <Button label={'Cancelar'} onClick={props.onCancel} />
+                    <Button label={title} onClick={props.onSubmit} />
+                </div>
+            </div>
         </div>
     );
 }

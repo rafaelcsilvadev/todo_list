@@ -1,7 +1,6 @@
 import type { TodoListEntity } from "../../domain/entities/todo_list_entity";
 import type { TodoListRepository } from "../../domain/repositories/todo_list_repository";
 import type { TodoListDataSource } from "../data_sources/todo_list_datasource";
-import { fromJson } from "../models/todo_list_model";
 
 export const TodoListRepositoryImpl = (dataSource: TodoListDataSource): TodoListRepository => {
     return {
@@ -9,7 +8,7 @@ export const TodoListRepositoryImpl = (dataSource: TodoListDataSource): TodoList
             const storage = dataSource.getTodoList();
             if (storage) {
      
-                const todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
+                const todos = [...JSON.parse(storage)];
             
                 return todos;
             }
@@ -19,9 +18,9 @@ export const TodoListRepositoryImpl = (dataSource: TodoListDataSource): TodoList
         getById: (id: number) => {
             const storage = dataSource.getTodoList();
             if (storage) {
-                const todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
+                const todos = [...JSON.parse(storage)];
 
-                return todos.find((todo) => todo.id === id) || null;
+                return todos.find((todo) => todo.id === id);
             }
 
             return [];
@@ -31,7 +30,7 @@ export const TodoListRepositoryImpl = (dataSource: TodoListDataSource): TodoList
             let todos: TodoListEntity[] = [];
 
             if (storage) {
-                todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
+                todos = [...JSON.parse(storage)];
             }
 
             const newTodo = {
@@ -47,7 +46,7 @@ export const TodoListRepositoryImpl = (dataSource: TodoListDataSource): TodoList
         update: (id: number, todo) => {
             const storage = dataSource.getTodoList();
             if (storage) {
-                const todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
+                const todos = [...JSON.parse(storage)];
 
                 const index = todos.findIndex((todo) => todo.id === id);
                 if (index !== -1) {
@@ -62,7 +61,7 @@ export const TodoListRepositoryImpl = (dataSource: TodoListDataSource): TodoList
         delete: (id: number) => {
             const storage = dataSource.getTodoList();
             if (storage) {
-                const todos = [...JSON.parse(storage)].map((todo: string) => fromJson(todo));
+                const todos = [...JSON.parse(storage)];
 
                 const index = todos.findIndex((todo) => todo.id === id);
                 if (index !== -1) {

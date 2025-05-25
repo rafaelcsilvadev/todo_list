@@ -6,7 +6,7 @@ import { TodoListDataSourceImpl } from '../../data/data_sources/todo_list_dataso
 
 const TodoListContext = createContext<TudoListController | null>(null);
 
-export const useApp = (): TudoListController => {
+export const useTodoList = (): TudoListController => {
   const context = useContext(TodoListContext);
   if (!context) throw new Error('TodoListContext should inside AppProvider');
   return context;

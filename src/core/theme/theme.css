@@ -3,5 +3,6 @@
     --secondary-color: #021B7E;
     --disabled-color: #8C8A8A;
     --dark-color: #212121;
+    --dark-color-opacity: rgba(33, 33, 33, 0.8);
     --font-family: 'Roboto', sans-serif;
 }

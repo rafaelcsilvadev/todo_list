@@ -7,13 +7,15 @@ interface InputProps {
     readonly id: string;
     readonly type: InputType;
     readonly label: string;
+    readonly onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
 }
 
-function Input({ id, type, label }: InputProps): ReactNode {
+function Input({ id, type, label, onChange }: InputProps): ReactNode {
     return (
         <div className={style.inputBox}>
-            <label htmlFor={id}>{label}</label><br />
-            <input id={id} type={type} />
+            <label htmlFor={id}>{label}</label>
+            <input id={id} type={type} onChange={onChange} />
         </div>
     );
 }

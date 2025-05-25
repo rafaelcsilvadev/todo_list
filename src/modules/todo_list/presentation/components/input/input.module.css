@@ -1,6 +1,9 @@
 @import '.../../../../../../../core/theme/theme.css';
 
 .inputBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     
     label {
         font-size: 1rem;
@@ -10,13 +13,12 @@
     }
 
     input {
-        width: 80%;
         padding: 0.5rem;
         border-radius: 0.8rem;
         border: 2px solid var(--secondary-color);
         font-size: 1rem;
         color: var(--dark-color);
         font-family: var(--font-family);
-        margin-top: 0.5rem;
+
     }
 }

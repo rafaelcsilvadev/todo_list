@@ -4,6 +4,7 @@ import type { TodoListEntity } from "../../../domain/entities/todo_list_entity";
 import Task from "../../components/task/task";
 import style from "./todo_list.module.css";
 import Button from "../../components/button/button";
+import FormModal from "../../components/form_modal/form_modal";
 
 const mock: TodoListEntity[] = [
     {
@@ -26,8 +27,16 @@ function TodoListPage(): ReactNode {
     return (
         <>
             <Nav title="Todo List" />
-            <main className={style.main}>
-                {mock.map((todo) => (
+            <FormModal onSubmit={function (): void {
+                throw new Error("Function not implemented.");
+            } } onChange1={function (): void {
+                throw new Error("Function not implemented.");
+            } } onChange2={function (): void {
+                throw new Error("Function not implemented.");
+            } } isCreate={false} />
+            {/* <main className={style.main}> */}
+
+                {/* {mock.map((todo) => (
                     <>
                         <br />
                         <Task
@@ -43,8 +52,8 @@ function TodoListPage(): ReactNode {
                     <Button label="New Task"
                         onClick={() => { }} 
                         />
-                </div>
-            </main>
+                </div> */}
+            {/* </main> */}
         </>
     )
 }

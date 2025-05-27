@@ -75,6 +75,7 @@ function TodoListPage(): ReactNode {
                                     ...todo,
                                     completed: !todo.completed
                                 });
+                                setTodoList(context.getAll());
                             }}
                             onDelete={() => {
                                 context.delete(todo.id);

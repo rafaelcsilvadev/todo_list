@@ -12,6 +12,7 @@
 </p>
 <hr></hr>
 <h3>Descrição</h3>
+    Todo List é uma aplicação web desenvolvida para ajudar usuários a organizarem suas tarefas diárias de forma prática e eficiente. Com uma interface simples e intuitiva, permite criar, visualizar, marcar como concluídas e remover atividades, facilitando a gestão do tempo e o aumento da produtividade no dia a dia.
 <p>
     
 </p>

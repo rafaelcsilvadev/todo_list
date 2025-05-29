@@ -16,7 +16,7 @@
 <p>
     
 </p>
-<h3>Software W</h3>
+<h3>Software Web</h3>
 <p>
 <img src="./assets/readme/screen.png" width="500">
 </p>
